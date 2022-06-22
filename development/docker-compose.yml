@@ -13,7 +13,7 @@ services:
     container_name: fastapi-pg
     restart: always
     build: ./
-    command: bash -c "alembic upgrade head && uvicorn app.main.main:app --host 0.0.0.0 --port 8000 --reload"
+    command: bash -c "PYTHONDONTWRITEBYTECODE=1 && alembic upgrade head && uvicorn app.main.main:app --host 0.0.0.0 --port 8000 --reload"
     ports:
       - 8000:8000
     volumes:
